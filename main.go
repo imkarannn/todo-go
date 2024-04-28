@@ -4,9 +4,10 @@ import (
     "context"
     "log"
     "net/http"
-	"D:/Repos/GO/TodoProject/handlers"
-    "github.com/go-chi/chi"
-    "github.com/go-chi/chi/middleware"
+    "github.com/imkarannn/handlers"
+	
+    "github.com/go-chi/chi/v5"
+    "github.com/go-chi/chi/v5/middleware"
 )
 
 func main() {
