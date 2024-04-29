@@ -54,7 +54,7 @@ func CreateUserEndpoint(w http.ResponseWriter, r *http.Request) {
     
     /*This line gets the MongoDB collection where you want to insert the user data. 
     GetCollection() is likely a function defined elsewhere in your code that returns the MongoDB collection.*/
-    collection := GetCollection()
+    collection := db.GetCollection()
     
 
     /*This line inserts the user struct into the MongoDB collection.
@@ -76,7 +76,7 @@ func AddUserRole(w http.ResponseWriter, r *http.Request) {
         return
     }
 
-    collection := GetCollection()
+    collection :=db.GetCollection()
     result, err := collection.InsertOne(context.Background(), userRole)
     if err != nil {
         http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -89,7 +89,7 @@ func AddUserRole(w http.ResponseWriter, r *http.Request) {
 func GetUsersEndpoint(w http.ResponseWriter, r *http.Request) {
     w.Header().Set("Content-Type", "application/json")
     var users []UserMaster
-    collection := GetCollection()
+    collection := db.GetCollection()
     cursor, err := collection.Find(context.Background(), bson.D{})
     if err != nil {
         http.Error(w, err.Error(), http.StatusInternalServerError)
