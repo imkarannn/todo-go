@@ -64,6 +64,8 @@ func CreateUserEndpoint(w http.ResponseWriter, r *http.Request) {
         http.Error(w, err.Error(), http.StatusInternalServerError)
         return
     }
+
+    
     /*This line encodes the result  into JSON format and writes it to the response writer w.*/
     json.NewEncoder(w).Encode(result)
 }
